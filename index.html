@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo J&M</title>
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome (para iconos) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Google Fonts (Montserrat) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+    <!-- Animate On Scroll (AOS) Library for effects -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Estilos CSS personalizados -->
+    <link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#">J&M Distribuciones</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#hero">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#products">Productos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#testimonials">Opiniones</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="social-buttons">
+        <!-- <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a> -->
+        <a href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-counter">0</span>
+        </a>
+        <a href="https://wa.me/573177116506?text=Hola,%20quisiera%20hacer%20una%20consulta." target="_blank"><i
+            class="fab fa-whatsapp"></i></a>
+    </div>
+
+    <section id="hero">
+        <div class="container" data-aos="fade-up" data-aos-delay="200">
+            <h1>Soluciones de Limpieza Impecables</h1>
+            <p class="lead">Productos de aseo profesionales para un hogar que brilla.</p>
+        </div>
+    </section>
+
+    <section id="products" class="section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Nuestro Catálogo</h2>
+            <div class="text-center filter-buttons" data-aos="fade-up" data-aos-delay="100">
+                <button class="btn active" data-filter="all">Todos</button>
+                <button class="btn" data-filter="1">Cocina</button>
+                <button class="btn" data-filter="2">Hogar</button>
+                <button class="btn" data-filter="3">Ropa</button>
+
+            </div>
+            <div class="row" id="product-list"></div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <h2 class="section-title text-white" data-aos="fade-up">Contáctanos</h2>
+            <p class="text-center lead mb-5 text-light" data-aos="fade-up" data-aos-delay="100">¿Interesado en nuestros
+                productos? Estamos para servirte.</p>
+            <div class="row justify-content-center">
+                <div class="col-md-6 text-center text-light" data-aos="fade-up" data-aos-delay="200">
+                    <p><strong>Teléfono:</strong> 317 711 65 06</p>
+                    <a href="https://wa.me/573177116506?text=Hola,%20quisiera%20hacer%20una%20consulta."
+                        class="btn btn-custom mt-3" target="_blank">Enviar un Mensaje</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center">
+        <div class="container">
+            <p>&copy; 2025 J&M DevMente. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Modal -->
+    <div class="modal fade" id="cartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="staticBackdropLabel">Realiza tu pedido</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div id="cart-items">
+                        <p class="text-center text-muted">Tu carrito está vacío.</p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir Comprando</button>
+                    <button type="button" class="btn btn-success" onclick="enviarPedidoWhatsap()">Enviar pedido <i class="fa-brands fa-whatsapp"></i> </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div id="toast-notification">Producto añadido al carrito</div>
+
+
+    <!-- JavaScript Libraries -->
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="assets/js//app.js"></script>
+
+
+
+</body>
+
+</html>
