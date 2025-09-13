@@ -4,7 +4,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Catálogo J&M</title>
+    <title>Catálogo J&M | Productos de Aseo y Limpieza</title>
+
+    <!-- Meta SEO -->
+    <meta name="description" content="Catálogo J&M Distribuciones - Productos de aseo profesionales, soluciones de limpieza impecables para tu hogar y negocio.">
+    <link rel="canonical" href="https://tusitio.com/">
+
+    <!-- Open Graph -->
+    <meta property="og:title" content="Catálogo J&M Distribuciones">
+    <meta property="og:description" content="Productos de aseo profesionales para un hogar que brilla.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://tusitio.com/">
+    <meta property="og:image" content="https://tusitio.com/assets/img/catalogo.jpg">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Catálogo J&M Distribuciones">
+    <meta name="twitter:description" content="Productos de aseo profesionales para un hogar que brilla.">
+    <meta name="twitter:image" content="https://tusitio.com/assets/img/catalogo.jpg">
 
     <!-- Google Tag Manager -->
     <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -20,21 +37,19 @@
     <!-- Font Awesome (para iconos) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <!-- Google Fonts (Montserrat) -->
+    <!-- Google Fonts (Montserrat con preload para performance) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" as="style" onload="this.onload=null;this.rel='stylesheet'">
 
-    <!-- Animate On Scroll (AOS) Library for effects -->
+    <!-- Animate On Scroll (AOS) -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <!-- Estilos CSS personalizados -->
     <link rel="stylesheet" href="assets/css/style.css">
-
 </head>
 
 <body>
-
     <!-- Google Tag Manager (noscript) -->
     <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-W7QNVCW9"
     height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -57,24 +72,15 @@
         </div>
     </nav>
 
-    <div class="social-buttons">
-        <!-- <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
-        <a href="#" target="_blank"><i class="fab fa-instagram"></i></a> -->
-        <a href="#" data-bs-toggle="modal" data-bs-target="#cartModal">
-            <i class="fas fa-shopping-cart"></i>
-            <span class="cart-counter">0</span>
-        </a>
-        <a href="https://wa.me/573177116506?text=Hola,%20quisiera%20hacer%20una%20consulta." target="_blank"><i
-            class="fab fa-whatsapp"></i></a>
-    </div>
-
+    <!-- Hero -->
     <section id="hero">
         <div class="container" data-aos="fade-up" data-aos-delay="200">
-            <h1>Soluciones de Limpieza Impecables</h1>
+            <h1>Catálogo J&M: Soluciones de Limpieza Impecables</h1>
             <p class="lead">Productos de aseo profesionales para un hogar que brilla.</p>
         </div>
     </section>
 
+    <!-- Products -->
     <section id="products" class="section-padding">
         <div class="container">
             <h2 class="section-title" data-aos="fade-up">Nuestro Catálogo</h2>
@@ -83,17 +89,16 @@
                 <button class="btn" data-filter="1">Cocina</button>
                 <button class="btn" data-filter="2">Hogar</button>
                 <button class="btn" data-filter="3">Ropa</button>
-
             </div>
             <div class="row" id="product-list"></div>
         </div>
     </section>
 
+    <!-- Contact -->
     <section id="contact" class="section-padding">
         <div class="container">
             <h2 class="section-title text-white" data-aos="fade-up">Contáctanos</h2>
-            <p class="text-center lead mb-5 text-light" data-aos="fade-up" data-aos-delay="100">¿Interesado en nuestros
-                productos? Estamos para servirte.</p>
+            <p class="text-center lead mb-5 text-light" data-aos="fade-up" data-aos-delay="100">¿Interesado en nuestros productos? Estamos para servirte.</p>
             <div class="row justify-content-center">
                 <div class="col-md-6 text-center text-light" data-aos="fade-up" data-aos-delay="200">
                     <p><strong>Teléfono:</strong> 317 711 65 06</p>
@@ -110,40 +115,10 @@
         </div>
     </footer>
 
-    <!-- Modal -->
-    <div class="modal fade" id="cartModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-        aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg modal-dialog-centered">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="staticBackdropLabel">Realiza tu pedido</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div id="cart-items">
-                        <p class="text-center text-muted">Tu carrito está vacío.</p>
-                    </div>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Seguir Comprando</button>
-                    <button type="button" class="btn btn-success" onclick="enviarPedidoWhatsap()">Enviar pedido <i class="fa-brands fa-whatsapp"></i> </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Toast Notification -->
-    <div id="toast-notification">Producto añadido al carrito</div>
-
-
-    <!-- JavaScript Libraries -->
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="assets/js//app.js"></script>
-
-
-
+    <script src="assets/js/app.js"></script>
 </body>
-
 </html>
