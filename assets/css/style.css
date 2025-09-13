@@ -133,6 +133,17 @@ img {
     color: var(--accent-color);
 }
 
+/* --- Corrección menú móvil desplegado --- */
+@media (max-width: 991.98px) {
+    .navbar .nav-link:last-child {
+        border-bottom: none;
+        background-color: var(--text-color);
+        width: 50%;
+        text-align: center;
+        border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+}
+
 /* --- Sección Hero (Principal) --- */
 #hero {
     height: 100vh;
