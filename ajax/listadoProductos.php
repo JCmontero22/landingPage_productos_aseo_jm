@@ -15,7 +15,7 @@
             from 
                 productos p
                 inner join presentacion_producto pp ON pp.id_producto  = p.id_producto
-                WHERE p.id_producto NOT IN (11,12, 15,16)";
+                WHERE p.pagina = 1 AND p.estado = 1";
 
                 
     $productos = $db->select($sql);
