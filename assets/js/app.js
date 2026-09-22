@@ -44,6 +44,9 @@ function filtroCategorias() {
                         .filter('[data-category="' + filterValue + '"]')
                         .fadeIn(400);
                 }
+                if (typeof AOS !== "undefined") {
+                    AOS.refresh();
+                }
             });
     });
 }
@@ -100,24 +103,30 @@ function renderProductos(productosMap) {
         });
 
         const cardHtml = `
-            <div class="col-lg-4 col-md-6 product-item pb-3" data-category="${producto.categoria}" data-aos="fade-up">
-                <div class="card product-card">
-                    <img src="${producto.img}" class="card-img-top" alt="[Imagen de ${producto.nombre}]">
-                    <div class="card-body">
+            <div class="col-lg-4 col-md-6 product-item d-flex pb-4" data-category="${producto.categoria}" data-aos="fade-up">
+                <div class="card product-card w-100">
+                    <div class="product-img-wrapper">
+                        <div class="product-img-bg" style="background-image: url('${producto.img}');"></div>
+                        <img src="${producto.img}" class="card-img-top" alt="[Imagen de ${producto.nombre}]" loading="lazy">
+                    </div>
+                    <div class="card-body d-flex flex-column">
                         <h5 class="card-title" data-product-name="${
                             producto.nombre
                         }">${producto.nombre}</h5>
-                        <label class="form-label" for="sizeSelect">Presentaciones:</label>
-                        <select class="form-select product-size-select mb-3" onchange="actualizacionPrecioCategoria(this)">
-                            ${opciones}
-                        </select>
-                        <p class="card-text product-price fs-4 fw-bold">Precio: $${separarMiles(
-                            producto.precio
-                        )}</p>
-                        <div class="mt-5 d-flex justify-content-end">
-                            <button class="btn btn-primary agregar-carrito" onclick="agregarProducto(this)"><i class="fa-solid fa-cart-plus"></i></button>
+                        <div class="product-options mb-3">
+                            <label class="form-label" for="sizeSelect_${producto.idProducto}">Presentaciones:</label>
+                            <select id="sizeSelect_${producto.idProducto}" class="form-select product-size-select" onchange="actualizacionPrecioCategoria(this)">
+                                ${opciones}
+                            </select>
                         </div>
-                        
+                        <div class="product-footer mt-auto pt-3 d-flex align-items-center justify-content-between">
+                            <p class="card-text product-price fs-4 fw-bold mb-0">Precio: $${separarMiles(
+                                producto.precio
+                            )}</p>
+                            <button class="btn btn-primary agregar-carrito" onclick="agregarProducto(this)" title="Agregar al carrito">
+                                <i class="fa-solid fa-cart-plus"></i>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -125,6 +134,10 @@ function renderProductos(productosMap) {
 
         productList.append(cardHtml);
     });
+
+    if (typeof AOS !== "undefined") {
+        AOS.refresh();
+    }
 }
 
 function actualizacionPrecioCategoria(element) {
