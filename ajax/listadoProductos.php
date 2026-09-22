@@ -1,9 +1,9 @@
 <?php 
-
+    
     require_once('../config/conexion.php');
-
+    
     $db = new conexion();
-
+    
     $sql = "SELECT 
                 p.id_producto  AS idProducto, 
                 p.nombre_produto AS nombre, 
@@ -17,6 +17,5 @@
                 inner join presentacion_producto pp ON pp.id_producto  = p.id_producto
                 WHERE p.pagina = 1 AND p.estado = 1 AND pp.estado = 1";
 
-                
     $productos = $db->select($sql);
     echo json_encode($productos);
